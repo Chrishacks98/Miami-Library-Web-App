@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <div class="row" ng-show="!editing">
+        <div class="col-md-6">
+            <table class="table table-responsive">
+                <tr>
+                    <th>Book Code</th>
+                    <th>Title</th>
+                    <th>Publisher Code</th>
+                    <th>Type</th>
+                    <th>Paperback</th>
+                </tr>
+                <tr ng-repeat="book in books">
+                    <td>{{book.bookCode}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.publisherCode}}</td>
+                    <td>{{book.type}}</td>
+                    <td>{{book.paperback}}</td>
+                    <td>
+                        <button class="btn btn-light" ng-click="updateInit(book)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="deleteBook(book)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary" ng-click="createInit()">Add New Book</button>
+        </div>
+    </div>
+
+    <form class="form" ng-show="editing" ng-submit="createUpdateBook()">
+        <div class="form-group">
+            <label>Code</label>
+            <input class="form-control" ng-model="book.bookCode"/>
+        </div>
+        <div class="form-group">
+            <label>Title</label>
+            <input class="form-control" ng-model="book.title"/>
+        </div>
+        <div class="form-group">
+            <label>Book publisher's code</label>
+            <input class="form-control" ng-model="book.publisherCode"/>
+        </div>
+        <div class="form-group">
+            <label>Type</label>
+            <input class="form-control" ng-model="book.type"/>
+        </div>
+        <div class="form-group">
+            <label>Paperback (Y/N)</label>
+            <input class="form-control" ng-model="book.paperback"/>
+        </div>
+        <div class="form-group" ng-show="creating">
+            <input class="btn btn-success" type="submit" value="Create" />
+        </div>
+        <div class="form-group" ng-show="updating">
+            <input class="btn btn-success" type="submit" value="Update" />
+        </div>
+    </form>
+</div>
